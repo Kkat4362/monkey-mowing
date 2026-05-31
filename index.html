@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Monkey Mowing — Highlands Ranch Lawn Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Baloo+2:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,500&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --forest-900: #082009;
+  --forest-800: #0d2c12;
+  --forest-700: #16401a;
+  --forest-600: #1d5524;
+  --forest-500: #2a6f2f;
+  --lime-700:  #2f8a13;
+  --lime-600:  #3f9e16;
+  --lime-500:  #54be1f;
+  --lime-400:  #74d83d;
+  --lime-300:  #9ae86a;
+  --lime-200:  #c5f3a3;
+  --lime-100:  #e6f9d6;
+  --cream:  #f5f9ee;
+  --cream-2:#eef5e3;
+  --paper:  #ffffff;
+  --ink:    #122710;
+  --ink-soft:#2c3d29;
+  --muted:  #5d6e58;
+  --line:   #e2ebd5;
+  --sun:  #ffd23f;
+  --sky:  #8fd0ff;
+  --soil: #6b4a2b;
+  --accent: var(--lime-500);
+  --accent-deep: var(--lime-700);
+  --font-display: 'Fredoka', sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --shadow-sm: 0 2px 8px rgba(16,44,18,.06);
+  --shadow-md: 0 14px 34px -16px rgba(16,44,18,.28);
+  --shadow-lg: 0 40px 80px -34px rgba(16,44,18,.42);
+  --shadow-lime: 0 18px 40px -14px rgba(84,190,31,.55);
+  --r-sm: 12px;
+  --r-md: 20px;
+  --r-lg: 30px;
+  --r-xl: 44px;
+  --maxw: 1200px;
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --ease-back: cubic-bezier(.34,1.56,.64,1);
+}
+[data-fonts="baloo"] { --font-display: 'Baloo 2', sans-serif; --font-body: 'DM Sans', system-ui, sans-serif; }
+[data-fonts="grot"]  { --font-display: 'Bricolage Grotesque', sans-serif; --font-body: 'Plus Jakarta Sans', system-ui, sans-serif; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.02; margin: 0; letter-spacing: -.01em; }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img { display: block; max-width: 100%; }
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent-deep);
+}
+.eyebrow::before { content: ""; width: 22px; height: 3px; border-radius: 3px; background: var(--accent); }
+.section { padding: clamp(64px, 9vw, 120px) 0; position: relative; }
+.section-head { max-width: 640px; margin-bottom: 52px; }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-head h2 { font-size: clamp(34px, 5vw, 58px); margin: 16px 0 0; }
+.section-head p { margin-top: 18px; color: var(--muted); font-size: clamp(17px, 2vw, 20px); line-height: 1.55; }
+.btn {
+  --pad: 16px 28px;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: var(--pad);
+  border-radius: 999px;
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 17px; line-height: 1;
+  transition: transform .35s var(--ease-back), box-shadow .35s var(--ease), background .25s;
+  will-change: transform;
+}
+.btn svg { width: 19px; height: 19px; }
+.btn-primary { background: var(--accent); color: var(--forest-900); box-shadow: var(--shadow-lime); }
+.btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 24px 46px -12px rgba(84,190,31,.7); }
+.btn-dark { background: var(--forest-700); color: #fff; box-shadow: var(--shadow-md); }
+.btn-dark:hover { transform: translateY(-3px); background: var(--forest-600); }
+.btn-ghost { background: rgba(255,255,255,.7); color: var(--forest-700); border: 2px solid var(--line); }
+.btn-ghost:hover { transform: translateY(-3px); border-color: var(--accent); background:#fff; }
+.btn-lg { --pad: 19px 34px; font-size: 19px; }
+.btn:active { transform: translateY(0) scale(.98); }
+.reveal { opacity: 0; transform: translateY(34px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .08s; }
+.reveal-d2 { transition-delay: .16s; }
+.reveal-d3 { transition-delay: .24s; }
+.reveal-d4 { transition-delay: .32s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 60;
+  transition: background .4s var(--ease), box-shadow .4s var(--ease), padding .4s var(--ease);
+  padding: 18px 0;
+}
+.nav.scrolled { background: rgba(245,249,238,.86); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); padding: 11px 0; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.nav-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.nav-logo img { height: 46px; width: auto; transition: height .4s var(--ease); }
+.nav.scrolled .nav-logo img { height: 40px; }
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-links a {
+  padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 15.5px; color: var(--ink-soft);
+  transition: background .2s, color .2s;
+}
+.nav-links a:hover { background: var(--lime-100); color: var(--forest-700); }
+.nav-cta { display: flex; align-items: center; gap: 14px; }
+.nav-phone { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--forest-700); font-size: 15.5px; }
+.nav-phone svg { width: 17px; height: 17px; }
+.nav-burger { display: none; width: 46px; height: 46px; border-radius: 14px; background: var(--forest-700); color:#fff; align-items: center; justify-content: center; }
+@media (max-width: 940px) {
+  .nav-links, .nav-phone { display: none; }
+  .nav-burger { display: inline-flex; }
+}
+.msheet { position: fixed; inset: 0; z-index: 70; pointer-events: none; }
+.msheet-bg { position: absolute; inset: 0; background: rgba(8,32,9,.4); opacity: 0; transition: opacity .35s; }
+.msheet-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(82vw, 360px); background: var(--cream); transform: translateX(100%); transition: transform .4s var(--ease); padding: 24px; display: flex; flex-direction: column; gap: 6px; box-shadow: var(--shadow-lg); }
+.msheet.open { pointer-events: auto; }
+.msheet.open .msheet-bg { opacity: 1; }
+.msheet.open .msheet-panel { transform: none; }
+.msheet-panel a { padding: 14px 16px; border-radius: 14px; font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--forest-800); }
+.msheet-panel a:hover { background: var(--lime-100); }
+.msheet-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.hero { position: relative; min-height: 100svh; display: flex; align-items: center; overflow: hidden; padding-top: 92px; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; width: 100%; }
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 9px; padding: 8px 16px 8px 9px; border-radius: 999px;
+  background: rgba(255,255,255,.7); border: 1px solid var(--line); font-weight: 700; font-size: 14px; color: var(--forest-700);
+  box-shadow: var(--shadow-sm);
+}
+.hero-pill .dot { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; color: var(--forest-900); }
+.hero-pill .dot svg { width: 14px; height: 14px; }
+.hero h1 { font-size: clamp(44px, 7vw, 86px); line-height: .96; margin: 22px 0 0; letter-spacing: -.02em; }
+.hero h1 .sweep { color: var(--accent-deep); position: relative; white-space: nowrap; }
+.hero-sub { margin-top: 22px; font-size: clamp(18px, 2.1vw, 22px); line-height: 1.5; color: var(--ink-soft); max-width: 540px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+.hero-trust { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 34px; }
+.hero-trust .t { display: flex; align-items: center; gap: 9px; font-weight: 600; font-size: 14.5px; color: var(--ink-soft); }
+.hero-trust .t svg { width: 20px; height: 20px; color: var(--accent-deep); flex: none; }
+.hero-switch { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 8; display: flex; gap: 7px; padding: 7px; background: rgba(255,255,255,.78); backdrop-filter: blur(10px); border-radius: 999px; box-shadow: var(--shadow-md); border: 1px solid var(--line); }
+.hero-switch button { padding: 8px 16px; border-radius: 999px; font-weight: 700; font-size: 13px; color: var(--muted); transition: .25s; display:flex; align-items:center; gap:7px; }
+.hero-switch button .sw { width: 12px; height: 12px; border-radius: 50%; }
+.hero-switch button.on { background: var(--forest-700); color: #fff; }
+.hero-switch button:not(.on):hover { color: var(--forest-700); }
+@media (max-width: 740px){ .hero-switch{ bottom: 14px; } .hero-switch button{ padding:7px 11px; font-size:12px; } }
+.hero[data-hero="sunny"] { background:
+  radial-gradient(1200px 600px at 78% -8%, #fff7d6 0%, rgba(255,247,214,0) 60%),
+  linear-gradient(180deg, #f0f8e6 0%, #e7f4d6 55%, #def0c7 100%); }
+.hero[data-hero="forest"] { background:
+  radial-gradient(900px 520px at 80% 12%, #1d5524 0%, rgba(29,85,36,0) 62%),
+  linear-gradient(165deg, #0d2c12 0%, #103016 60%, #0a2410 100%); }
+.hero[data-hero="forest"] h1, .hero[data-hero="forest"] .hero-sub { color: #f4fbe9; }
+.hero[data-hero="forest"] .hero-sub { color: #cfe6bd; }
+.hero[data-hero="forest"] h1 .sweep { color: var(--lime-400); }
+.hero[data-hero="forest"] .hero-pill { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); color:#eaf7d9; }
+.hero[data-hero="forest"] .hero-trust .t { color:#cfe6bd; }
+.hero[data-hero="forest"] .hero-trust .t svg { color: var(--lime-400); }
+.hero[data-hero="forest"] .btn-ghost { background: rgba(255,255,255,.08); color:#fff; border-color: rgba(255,255,255,.2); }
+.hero[data-hero="pattern"] { background: #f3f8ea; background-image:
+  radial-gradient(circle at 1px 1px, rgba(84,190,31,.16) 2px, transparent 0);
+  background-size: 30px 30px; }
+.float { position: absolute; pointer-events: none; opacity: .9; will-change: transform; }
+@keyframes bob { 0%,100%{ transform: translateY(0) rotate(var(--rot,0deg)); } 50%{ transform: translateY(-18px) rotate(var(--rot,0deg)); } }
+.bob { animation: bob 6s ease-in-out infinite; }
+.scene { position: relative; width: 100%; aspect-ratio: 1 / 1; max-width: 560px; margin-left: auto; }
+.scene-card {
+  position: absolute; inset: 0; border-radius: var(--r-xl);
+  background: linear-gradient(180deg, #bfe89a 0%, #8fd566 100%);
+  overflow: hidden; box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255,255,255,.4);
+}
+.scene[data-hero="forest"] .scene-card { box-shadow: 0 50px 90px -30px rgba(0,0,0,.6); }
+.scene-sky { position: absolute; top: 0; left: 0; right: 0; height: 42%; background: linear-gradient(180deg, #cdeeff 0%, #e8f7ff 100%); }
+.scene-sun { position: absolute; top: 30px; right: 36px; width: 64px; height: 64px; border-radius: 50%; background: radial-gradient(circle, #ffe680 0%, #ffd23f 70%); box-shadow: 0 0 40px rgba(255,210,63,.7); }
+.scene-cloud { position: absolute; height: 26px; border-radius: 999px; background: #fff; opacity: .92; }
+.lawn { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; background: linear-gradient(180deg, #6cc63f 0%, #4fa82a 100%); overflow: hidden; }
+.stripe { position: absolute; top: 0; bottom: 0; width: 12.5%; }
+.stripe.dark { background: rgba(20,70,20,.10); }
+.grass-row { position: absolute; left: 0; bottom: 0; height: 60%; width: 100%; display: flex; align-items: flex-end; }
+.blade { flex: 1; margin: 0 .6px; background: linear-gradient(180deg, #3f9e16, #2f7d10); border-radius: 4px 4px 0 0; transition: height .25s var(--ease); transform-origin: bottom; }
+.mower {
+  position: absolute; bottom: 12%; width: 128px; z-index: 4;
+  animation: mow 7s linear infinite;
+}
+.mower img { width: 100%; filter: drop-shadow(0 10px 12px rgba(0,0,0,.28)); }
+@keyframes mow {
+  0%   { left: -28%; transform: scaleX(1); }
+  46%  { left: 92%;  transform: scaleX(1); }
+  50%  { left: 92%;  transform: scaleX(-1); }
+  96%  { left: -28%; transform: scaleX(-1); }
+  100% { left: -28%; transform: scaleX(1); }
+}
+.clip { position: absolute; width: 7px; height: 7px; border-radius: 2px; background: #2f7d10; opacity: 0; }
+@keyframes fly { 0%{ opacity:1; transform: translate(0,0) rotate(0); } 100%{ opacity: 0; transform: translate(var(--fx), var(--fy)) rotate(220deg); } }
+.scene-chip {
+  position: absolute; display: flex; align-items: center; gap: 10px;
+  background: #fff; border-radius: 16px; padding: 11px 15px; box-shadow: var(--shadow-md);
+  font-weight: 700; font-size: 14px; color: var(--forest-800);
+}
+.scene-chip .ic { width: 34px; height: 34px; border-radius: 11px; background: var(--lime-100); display: grid; place-items: center; color: var(--accent-deep); }
+.scene-chip .ic svg { width: 19px; height: 19px; }
+.scene-chip small { display: block; font-weight: 600; color: var(--muted); font-size: 11.5px; }
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+  .scene { max-width: 440px; margin: 0 auto; }
+  .hero { min-height: auto; padding-bottom: 120px; }
+}
+.stats { background: var(--forest-700); color: #fff; }
+.stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 46px 0; }
+.stat { text-align: center; position: relative; }
+.stat:not(:last-child)::after { content:""; position:absolute; right: -10px; top: 14%; height: 72%; width:1px; background: rgba(255,255,255,.14); }
+.stat .num { font-family: var(--font-display); font-weight: 700; font-size: clamp(38px, 5vw, 58px); color: var(--lime-400); line-height: 1; letter-spacing: -.02em; }
+.stat .lbl { margin-top: 8px; font-weight: 600; color: #cfe6bd; font-size: 15px; }
+@media (max-width: 720px){ .stats-inner{ grid-template-columns: 1fr 1fr; gap: 30px 20px; } .stat:nth-child(2)::after{ display:none; } }
+.svc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+@media (max-width: 980px){ .svc-grid{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px){ .svc-grid{ grid-template-columns: 1fr; } }
+.svc {
+  position: relative; background: var(--paper); border-radius: var(--r-md); padding: 30px 26px 28px;
+  border: 1px solid var(--line); overflow: hidden; cursor: pointer;
+  transition: transform .45s var(--ease-back), box-shadow .45s var(--ease), border-color .3s;
+}
+.svc::before { content:""; position: absolute; inset: 0; background: linear-gradient(160deg, var(--forest-700), var(--forest-600)); opacity: 0; transition: opacity .4s var(--ease); z-index: 0; }
+.svc > * { position: relative; z-index: 1; }
+.svc:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.svc:hover::before { opacity: 1; }
+.svc-ic { width: 62px; height: 62px; border-radius: 18px; background: var(--lime-100); display: grid; place-items: center; color: var(--accent-deep); transition: .4s var(--ease-back); }
+.svc-ic svg { width: 32px; height: 32px; }
+.svc:hover .svc-ic { background: var(--lime-400); color: var(--forest-900); transform: rotate(-8deg) scale(1.08); }
+.svc h3 { font-size: 23px; margin-top: 20px; transition: color .35s; }
+.svc p { margin-top: 10px; color: var(--muted); font-size: 15px; line-height: 1.55; transition: color .35s; }
+.svc .more { display: inline-flex; align-items: center; gap: 7px; margin-top: 18px; font-weight: 700; font-size: 14px; color: var(--accent-deep); transition: color .35s, gap .3s; }
+.svc:hover h3, .svc:hover p { color: #fff; }
+.svc:hover p { color: #d7ecc6; }
+.svc:hover .more { color: var(--lime-300); gap: 12px; }
+.svc-tag { position: absolute; top: 18px; right: 18px; z-index: 2; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; background: var(--sun); color: #5a3d00; }
+.est { background: linear-gradient(165deg, var(--forest-800), var(--forest-700) 60%, var(--forest-600)); color: #fff; border-radius: var(--r-xl); overflow: hidden; position: relative; }
+.est-grid { display: grid; grid-template-columns: 1.1fr 1fr; }
+.est-left { padding: clamp(36px, 5vw, 64px); }
+.est-left h2 { font-size: clamp(30px, 4vw, 48px); color: #fff; }
+.est-left .lead { margin-top: 16px; color: #cfe6bd; font-size: 18px; line-height: 1.5; }
+.est-control { margin-top: 38px; }
+.est-control .row { display: flex; justify-content: space-between; align-items: baseline; }
+.est-control .row label { font-weight: 700; font-size: 15px; color: #eaf7d9; }
+.est-control .row .val { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--lime-400); }
+input[type="range"].slider { -webkit-appearance: none; appearance: none; width: 100%; height: 10px; border-radius: 999px; margin-top: 16px; background: rgba(255,255,255,.16); outline: none; }
+input[type="range"].slider::-webkit-slider-thumb { -webkit-appearance: none; width: 30px; height: 30px; border-radius: 50%; background: var(--lime-400); border: 4px solid #fff; box-shadow: 0 6px 16px rgba(0,0,0,.35); cursor: grab; transition: transform .15s; }
+input[type="range"].slider::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.12); }
+input[type="range"].slider::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: var(--lime-400); border: 4px solid #fff; cursor: grab; }
+.est-ticks { display: flex; justify-content: space-between; margin-top: 10px; font-size: 12.5px; color: #9fc488; font-weight: 600; }
+.est-freq { display: flex; gap: 8px; margin-top: 30px; flex-wrap: wrap; }
+.est-freq button { flex: 1; min-width: 90px; padding: 14px 10px; border-radius: 14px; background: rgba(255,255,255,.07); color: #eaf7d9; font-weight: 700; font-size: 14px; border: 1.5px solid rgba(255,255,255,.12); transition: .25s; }
+.est-freq button small { display:block; font-weight:600; color:#9fc488; font-size:11.5px; margin-top:3px; }
+.est-freq button.on { background: var(--lime-400); color: var(--forest-900); border-color: var(--lime-400); }
+.est-freq button.on small { color: var(--forest-700); }
+.est-right { background: rgba(0,0,0,.18); padding: clamp(34px, 4.5vw, 60px); display: flex; flex-direction: column; justify-content: center; position: relative; }
+.est-quote-label { font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: 13px; color: var(--lime-300); }
+.est-price { font-family: var(--font-display); font-weight: 700; letter-spacing: -.02em; line-height: 1; margin-top: 12px; display: flex; align-items: baseline; gap: 6px; }
+.est-price .amt { font-size: clamp(60px, 9vw, 92px); color: #fff; }
+.est-price .per { font-size: 22px; color: #9fc488; font-weight: 600; }
+.est-note { margin-top: 14px; color: #bcd9a8; font-size: 14.5px; line-height: 1.5; }
+.est-breakdown { margin-top: 26px; display: flex; flex-direction: column; gap: 10px; }
+.est-breakdown .b { display: flex; justify-content: space-between; font-size: 14.5px; padding-bottom: 10px; border-bottom: 1px dashed rgba(255,255,255,.14); color: #d7ecc6; }
+.est-breakdown .b b { color: #fff; font-weight: 700; }
+.est .est-cta { margin-top: 28px; }
+@media (max-width: 860px){ .est-grid{ grid-template-columns: 1fr; } }
+.proc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; }
+@media (max-width: 980px){ .proc-grid{ grid-template-columns: 1fr 1fr; gap: 28px 20px; } }
+@media (max-width: 520px){ .proc-grid{ grid-template-columns: 1fr; } }
+.step { position: relative; padding-top: 14px; }
+.step-num { font-family: var(--font-display); font-weight: 700; font-size: 70px; color: var(--lime-200); line-height: .8; letter-spacing: -.03em; }
+.step-ic { position: absolute; top: 8px; left: 46px; width: 46px; height: 46px; border-radius: 14px; background: var(--forest-700); color: var(--lime-400); display: grid; place-items: center; box-shadow: var(--shadow-md); }
+.step-ic svg { width: 24px; height: 24px; }
+.step h3 { font-size: 22px; margin-top: 20px; }
+.step p { margin-top: 9px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+.price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+@media (max-width: 900px){ .price-grid{ grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; } }
+.plan { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 34px 30px; display: flex; flex-direction: column; position: relative; transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
+.plan:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.plan.feat { background: linear-gradient(170deg, var(--forest-700), var(--forest-800)); color: #fff; border-color: transparent; box-shadow: var(--shadow-lg); }
+.plan.feat::after { content: "Most popular"; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--sun); color: #5a3d00; font-weight: 800; font-size: 12.5px; letter-spacing: .04em; padding: 7px 16px; border-radius: 999px; box-shadow: var(--shadow-md); }
+.plan-name { font-family: var(--font-display); font-weight: 600; font-size: 24px; }
+.plan-desc { margin-top: 6px; color: var(--muted); font-size: 14.5px; }
+.plan.feat .plan-desc { color: #bcd9a8; }
+.plan-price { margin-top: 22px; display: flex; align-items: baseline; gap: 6px; }
+.plan-price .amt { font-family: var(--font-display); font-weight: 700; font-size: 52px; letter-spacing: -.02em; }
+.plan-price .per { color: var(--muted); font-weight: 600; }
+.plan.feat .plan-price .per { color: #9fc488; }
+.plan ul { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-direction: column; gap: 13px; flex: 1; }
+.plan li { display: flex; gap: 11px; align-items: flex-start; font-size: 15px; line-height: 1.4; }
+.plan li svg { width: 20px; height: 20px; flex: none; color: var(--accent-deep); margin-top: 1px; }
+.plan.feat li svg { color: var(--lime-400); }
+.plan .btn { margin-top: 26px; justify-content: center; }
+.plan-foot { text-align: center; margin-top: 32px; color: var(--muted); font-size: 15px; }
+.ba-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+@media (max-width: 880px){ .ba-wrap{ grid-template-columns: 1fr; } }
+.ba {
+  position: relative; aspect-ratio: 4/3; border-radius: var(--r-lg); overflow: hidden;
+  box-shadow: var(--shadow-lg); user-select: none; cursor: ew-resize; touch-action: none;
+  border: 1px solid var(--line);
+}
+.ba-layer { position: absolute; inset: 0; }
+.ba-after { z-index: 1; }
+.ba-before { z-index: 2; overflow: hidden; }
+.ba-before .ba-inner { position: absolute; inset: 0; width: var(--baw, 800px); }
+.ba-handle { position: absolute; top: 0; bottom: 0; width: 4px; background: #fff; z-index: 3; box-shadow: 0 0 0 1px rgba(0,0,0,.06); }
+.ba-knob { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 52px; height: 52px; border-radius: 50%; background: #fff; box-shadow: var(--shadow-md); display: grid; place-items: center; color: var(--forest-700); }
+.ba-knob svg { width: 26px; height: 26px; }
+.ba-badge { position: absolute; top: 16px; z-index: 4; font-weight: 800; font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; padding: 7px 13px; border-radius: 999px; backdrop-filter: blur(6px); }
+.ba-badge.before { left: 16px; background: rgba(20,39,16,.6); color: #fff; }
+.ba-badge.after { right: 16px; background: var(--lime-400); color: var(--forest-900); }
+.about-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 54px; align-items: center; }
+@media (max-width: 900px){ .about-grid{ grid-template-columns: 1fr; gap: 36px; } }
+.about-media { position: relative; }
+.about-card { aspect-ratio: 5/6; border-radius: var(--r-xl); background: linear-gradient(165deg, var(--lime-200), var(--lime-400)); position: relative; overflow: hidden; box-shadow: var(--shadow-lg); display: grid; place-items: center; }
+.about-card img { width: 76%; }
+.about-quote { position: absolute; bottom: -26px; left: -26px; background: #fff; border-radius: var(--r-md); padding: 20px 22px; max-width: 270px; box-shadow: var(--shadow-lg); font-family: var(--font-display); font-weight: 500; font-size: 17px; color: var(--forest-800); line-height: 1.3; }
+.about-quote span { color: var(--accent-deep); }
+.about-points { display: grid; gap: 16px; margin-top: 30px; }
+.about-point { display: flex; gap: 15px; align-items: flex-start; }
+.about-point .ic { width: 46px; height: 46px; flex: none; border-radius: 14px; background: var(--lime-100); color: var(--accent-deep); display: grid; place-items: center; }
+.about-point .ic svg { width: 24px; height: 24px; }
+.about-point h4 { font-size: 18px; font-family: var(--font-display); }
+.about-point p { margin-top: 4px; color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; }
+@media (max-width: 880px){ .faq-grid{ grid-template-columns: 1fr; gap: 24px; } }
+.faq-list { display: flex; flex-direction: column; gap: 14px; }
+.faq-item { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; transition: border-color .3s, box-shadow .3s; }
+.faq-item.open { border-color: var(--accent); box-shadow: var(--shadow-md); }
+.faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 24px; text-align: left; font-family: var(--font-display); font-weight: 500; font-size: 18.5px; color: var(--forest-800); }
+.faq-ic { width: 30px; height: 30px; flex: none; border-radius: 50%; background: var(--lime-100); color: var(--accent-deep); display: grid; place-items: center; transition: transform .35s var(--ease-back), background .3s, color .3s; }
+.faq-ic svg { width: 17px; height: 17px; }
+.faq-item.open .faq-ic { background: var(--accent); color: #fff; transform: rotate(135deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .4s var(--ease); }
+.faq-a-inner { padding: 0 24px 24px; color: var(--muted); font-size: 15.5px; line-height: 1.6; }
+.quote { background: var(--forest-800); color: #fff; position: relative; overflow: hidden; }
+.quote-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; position: relative; z-index: 2; }
+@media (max-width: 900px){ .quote-grid{ grid-template-columns: 1fr; gap: 36px; } }
+.quote h2 { font-size: clamp(34px, 5vw, 56px); color: #fff; }
+.quote .lead { margin-top: 18px; color: #cfe6bd; font-size: 18px; line-height: 1.55; max-width: 440px; }
+.quote-contacts { margin-top: 34px; display: flex; flex-direction: column; gap: 16px; }
+.qc { display: flex; align-items: center; gap: 15px; }
+.qc .ic { width: 50px; height: 50px; border-radius: 15px; background: rgba(255,255,255,.08); display: grid; place-items: center; color: var(--lime-400); flex: none; }
+.qc .ic svg { width: 23px; height: 23px; }
+.qc small { display: block; color: #9fc488; font-size: 13px; font-weight: 600; }
+.qc b { font-family: var(--font-display); font-weight: 500; font-size: 19px; }
+.form-card { background: var(--paper); border-radius: var(--r-xl); padding: clamp(28px, 4vw, 44px); box-shadow: var(--shadow-lg); color: var(--ink); }
+.fr { margin-bottom: 18px; }
+.fr label { display: block; font-weight: 700; font-size: 13.5px; color: var(--ink-soft); margin-bottom: 8px; }
+.fr label .req { color: #d23f3f; }
+.fr input, .fr select, .fr textarea {
+  width: 100%; padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--cream);
+  font-family: inherit; font-size: 15.5px; color: var(--ink); transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.fr textarea { resize: vertical; min-height: 96px; }
+.fr input:focus, .fr select:focus, .fr textarea:focus { outline: none; border-color: var(--accent); background: #fff; box-shadow: 0 0 0 4px rgba(84,190,31,.16); }
+.fr.err input, .fr.err select, .fr.err textarea { border-color: #e06464; background: #fdf2f2; }
+.fr .msg { margin-top: 6px; font-size: 12.5px; color: #d23f3f; font-weight: 600; height: 0; opacity: 0; transition: .25s; }
+.fr.err .msg { height: auto; opacity: 1; }
+.fr-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 480px){ .fr-2{ grid-template-columns: 1fr; gap: 0; } }
+.chips { display: flex; flex-wrap: wrap; gap: 9px; }
+.chip { padding: 10px 15px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--cream); font-weight: 600; font-size: 14px; color: var(--ink-soft); transition: .2s; display:flex; align-items:center; gap:7px; }
+.chip svg { width: 15px; height: 15px; opacity: 0; width: 0; transition: .2s; }
+.chip.on { background: var(--lime-100); border-color: var(--accent); color: var(--forest-700); }
+.chip.on svg { opacity: 1; width: 15px; color: var(--accent-deep); }
+.form-submit { width: 100%; justify-content: center; margin-top: 6px; }
+.form-success { text-align: center; padding: 30px 10px; }
+.form-success .check { width: 84px; height: 84px; border-radius: 50%; background: var(--lime-100); color: var(--accent-deep); display: grid; place-items: center; margin: 0 auto 22px; animation: pop .5s var(--ease-back); }
+.form-success .check svg { width: 44px; height: 44px; }
+@keyframes pop { 0%{ transform: scale(0); } 100%{ transform: scale(1); } }
+.form-success h3 { font-size: 28px; }
+.form-success p { margin-top: 12px; color: var(--muted); font-size: 16px; }
+.footer { background: var(--forest-900); color: #cfe6bd; padding: 70px 0 30px; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
+@media (max-width: 820px){ .footer-grid{ grid-template-columns: 1fr 1fr; gap: 34px; } }
+@media (max-width: 480px){ .footer-grid{ grid-template-columns: 1fr; } }
+.footer img.fl { height: 64px; margin-bottom: 18px; }
+.footer p.fdesc { font-size: 14.5px; line-height: 1.6; color: #9fc488; max-width: 280px; }
+.footer h5 { font-family: var(--font-display); font-weight: 600; font-size: 17px; color: #fff; margin-bottom: 16px; }
+.footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; }
+.footer ul a { font-size: 14.5px; color: #9fc488; transition: color .2s; }
+.footer ul a:hover { color: var(--lime-400); }
+.footer-bottom { margin-top: 50px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13.5px; color: #7fa06b; }
+.footer-social { display: flex; gap: 10px; }
+.footer-social a { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.06); display: grid; place-items: center; color: #cfe6bd; transition: .25s; }
+.footer-social a:hover { background: var(--lime-400); color: var(--forest-900); transform: translateY(-3px); }
+.footer-social svg { width: 19px; height: 19px; }
+.bg-cream { background: var(--cream); }
+.bg-paper { background: var(--paper); }
+.bg-soft { background: linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%); }
+.leaf-divider { position: absolute; left: 0; right: 0; pointer-events: none; line-height: 0; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+/* shared — icons, hooks, reveal helpers */
+const { useState, useEffect, useRef, useCallback } = React;
+
+const I = {
+  mow: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M2 17h9l1-4h7"/><path d="M19 13V8h3"/><circle cx="6" cy="19" r="2"/><circle cx="16" cy="19" r="2"/><path d="M8 19h6"/><path d="M4 17l1-3M7 13V9M10 13l.6-3M13 11l1-3"/></svg>),
+  leaf: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>),
+  mulch: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M3 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M3 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M12 4v6M12 4c-1.5 1-2 2.5-2 4M12 4c1.5 1 2 2.5 2 4"/></svg>),
+  snow: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19M12 5l-2 2 2 2 2-2-2-2M12 19l-2-2 2-2 2 2-2 2M5 12l2-2 2 2-2 2-2-2M19 12l-2-2-2 2 2 2 2-2"/></svg>),
+  spray: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M9 11V6a2 2 0 0 1 2-2h1V3h3v1a2 2 0 0 1 2 2v5"/><rect x="7" y="11" width="12" height="10" rx="2"/><path d="M3 6h2M3 9h3M4 3h1"/></svg>),
+  bolt: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M13 2 4.5 13.5H11l-1 8.5L18.5 10H12l1-8Z"/></svg>),
+  phone: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>),
+  mail: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>),
+  pin: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>),
+  check: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M20 6 9 17l-5-5"/></svg>),
+  arrow: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M5 12h14M13 6l6 6-6 6"/></svg>),
+  plus: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M12 5v14M5 12h14"/></svg>),
+  star: (p) => (<svg viewBox="0 0 24 24" fill="currentColor" {...p}><path d="m12 2 2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 7.1-1.01L12 2Z"/></svg>),
+  leafCheck: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="m9 12 2 2 4-4"/></svg>),
+  clock: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>),
+  shield: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>),
+  heart: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M19 14c1.5-1.5 3-3.4 3-5.5A5.5 5.5 0 0 0 12 5 5.5 5.5 0 0 0 2 8.5c0 2.1 1.5 4 3 5.5l7 7Z"/></svg>),
+  sparkle: (p) => (<svg viewBox="0 0 24 24" fill="currentColor" {...p}><path d="M12 2c.4 3.9 1.6 6.4 3.5 7.6 1.2.8 2.9 1.3 5 1.4-3.9.4-6.4 1.6-7.6 3.5-.8 1.2-1.3 2.9-1.4 5-.4-3.9-1.6-6.4-3.5-7.6-1.2-.8-2.9-1.3-5-1.4 3.9-.4 6.4-1.6 7.6-3.5C11.4 6.8 11.9 5.1 12 2Z"/></svg>),
+  cal: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>),
+  ruler: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M3 8h18v8H3zM7 8v3M11 8v4M15 8v3M19 8v4"/></svg>),
+  truck: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M3 6h11v9H3zM14 9h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>),
+  chat: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M21 11.5a8.4 8.4 0 0 1-9 8.3 9 9 0 0 1-3.8-.7L3 21l1.4-4A8.3 8.3 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z"/></svg>),
+  drop: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M12 3c3 4 6 7 6 10a6 6 0 0 1-12 0c0-3 3-6 6-10Z"/></svg>),
+  fb: (p)=>(<svg viewBox="0 0 24 24" fill="currentColor" {...p}><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1Z"/></svg>),
+  ig: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...p}><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg>),
+  menu: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" {...p}><path d="M4 7h16M4 12h16M4 17h16"/></svg>),
+  x: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" {...p}><path d="M6 6l12 12M18 6 6 18"/></svg>),
+};
+
+function useRevealObserver() {
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal:not(.in)');
+    if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(e => io.observe(e));
+    return () => io.disconnect();
+  });
+}
+
+function CountUp({ to, suffix = '', prefix = '', dur = 1600, decimals = 0 }) {
+  const ref = useRef(null);
+  const [val, setVal] = useState(0);
+  const done = useRef(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver((ents) => {
+      ents.forEach(en => {
+        if (en.isIntersecting && !done.current) {
+          done.current = true;
+          const start = performance.now();
+          const tick = (now) => {
+            const p = Math.min(1, (now - start) / dur);
+            const eased = 1 - Math.pow(1 - p, 3);
+            setVal(to * eased);
+            if (p < 1) requestAnimationFrame(tick);
+            else setVal(to);
+          };
+          requestAnimationFrame(tick);
+        }
+      });
+    }, { threshold: 0.4 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [to, dur]);
+  const shown = decimals ? val.toFixed(decimals) : Math.round(val).toLocaleString();
+  return <span ref={ref}>{prefix}{shown}{suffix}</span>;
+}
+
+const cx = (...a) => a.filter(Boolean).join(' ');
+</script>
+
+<script type="text/babel">
+/* hero */
+function parseHL(text) {
+  const out = [];
+  const re = /\*([^*]+)\*/g;
+  let last = 0, m;
+  while ((m = re.exec(text))) {
+    if (m.index > last) out.push({ t: text.slice(last, m.index), hl: false });
+    out.push({ t: m[1], hl: true });
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) out.push({ t: text.slice(last), hl: false });
+  return out.length ? out : [{ t: text, hl: false }];
+}
+
+function MowerSVG() {
+  return (
+    <svg viewBox="0 0 150 120" width="100%" aria-hidden="true">
+      <path d="M20 96 L70 40" stroke="#15401a" strokeWidth="7" strokeLinecap="round" fill="none"/>
+      <path d="M16 92 L66 36" stroke="#15401a" strokeWidth="7" strokeLinecap="round" fill="none"/>
+      <path d="M62 34 q8 -4 14 2" stroke="#15401a" strokeWidth="7" strokeLinecap="round" fill="none"/>
+      <path d="M30 78 L18 60 q-6 -2 -8 6 l6 16 Z" fill="#2f7d10"/>
+      <rect x="62" y="74" width="64" height="22" rx="7" fill="#15401a"/>
+      <rect x="74" y="58" width="34" height="20" rx="5" fill="#1d5524"/>
+      <rect x="80" y="62" width="22" height="8" rx="3" fill="#54be1f"/>
+      <circle cx="74" cy="98" r="13" fill="#0d2c12"/><circle cx="74" cy="98" r="5" fill="#54be1f"/>
+      <circle cx="116" cy="98" r="13" fill="#0d2c12"/><circle cx="116" cy="98" r="5" fill="#54be1f"/>
+      <rect x="118" y="80" width="9" height="14" rx="3" fill="#15401a"/>
+    </svg>
+  );
+}
+
+function MowerScene({ dir, play }) {
+  const bladesRef = useRef([]);
+  const mowerRef = useRef(null);
+  const rafRef = useRef(0);
+  const N = 44;
+  const reduced = typeof window !== 'undefined' && window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  useEffect(() => {
+    if (reduced) {
+      bladesRef.current.forEach(b => b && (b.style.height = (30 + Math.random()*20) + '%'));
+      return;
+    }
+    const fullH = bladesRef.current.map(() => 62 + Math.random() * 36);
+    const cur = fullH.slice();
+    let x = -22;
+    let d = 1;
+    const speed = 0.42 * (play === 'bananas' ? 1.5 : play === 'chill' ? 0.7 : 1);
+    let lastT = performance.now();
+    const loop = (now) => {
+      const dt = Math.min(40, now - lastT); lastT = now;
+      x += d * speed * (dt / 16.7);
+      if (x > 118) { x = 118; d = -1; }
+      if (x < -22) { x = -22; d = 1; }
+      if (mowerRef.current) {
+        mowerRef.current.style.left = x + '%';
+        mowerRef.current.style.transform = `scaleX(${d > 0 ? 1 : -1})`;
+      }
+      const cutFront = x + (d > 0 ? 4 : -4);
+      for (let i = 0; i < N; i++) {
+        const bx = (i / (N - 1)) * 100;
+        cur[i] = Math.min(fullH[i], cur[i] + 0.18 * (dt / 16.7));
+        if (d > 0 && bx <= cutFront && bx > cutFront - 7) cur[i] = 16 + Math.random()*6;
+        if (d < 0 && bx >= cutFront && bx < cutFront + 7) cur[i] = 16 + Math.random()*6;
+        const el = bladesRef.current[i];
+        if (el) el.style.height = cur[i] + '%';
+      }
+      rafRef.current = requestAnimationFrame(loop);
+    };
+    rafRef.current = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [play, reduced]);
+
+  return (
+    <div className="scene" data-hero={dir}>
+      <div className="scene-card">
+        <div className="scene-sky" />
+        <div className="scene-sun bob" style={{ '--rot': '0deg' }} />
+        <div className="scene-cloud" style={{ top: '14%', left: '12%', width: 64 }} />
+        <div className="scene-cloud bob" style={{ top: '22%', left: '46%', width: 44, animationDelay: '1.2s' }} />
+        <div className="lawn">
+          {[1,2,3,4,5,6,7].map(i => (
+            i % 2 ? <div key={i} className="stripe dark" style={{ left: (i*12.5)+'%' }} /> : null
+          ))}
+          <div className="grass-row">
+            {Array.from({ length: N }).map((_, i) => (
+              <div key={i} className="blade" ref={el => bladesRef.current[i] = el} style={{ height: '70%' }} />
+            ))}
+          </div>
+          <div className="mower" ref={mowerRef} style={{ left: '-22%' }}>
+            <MowerSVG />
+          </div>
+        </div>
+      </div>
+      <div className="scene-chip bob" style={{ top: '7%', left: '-7%', animationDelay: '.4s' }}>
+        <div className="ic"><I.star /></div>
+        <div><b>4.9 / 5</b><small>240+ happy lawns</small></div>
+      </div>
+      <div className="scene-chip bob" style={{ bottom: '8%', right: '-6%', animationDelay: '1.1s' }}>
+        <div className="ic"><I.bolt /></div>
+        <div><b>100% electric</b><small>quiet &amp; clean</small></div>
+      </div>
+    </div>
+  );
+}
+
+function Hero({ dir, setDir, headline, play }) {
+  const segs = parseHL(headline);
+  const dirs = [
+    { id: 'sunny', label: 'Sunny', c: '#74d83d' },
+    { id: 'forest', label: 'Bold', c: '#103016' },
+    { id: 'pattern', label: 'Playful', c: '#9ae86a' },
+  ];
+  const sub = "Mowing, fertilizing, mulching & seasonal snow removal across Highlands Ranch — handled by a crew that actually shows up. All-electric equipment. Always-free quotes.";
+  return (
+    <header className="hero" data-hero={dir} id="top">
+      {play !== 'chill' && (
+        <React.Fragment>
+          <div className="float bob" style={{ top: '18%', left: '6%', '--rot': '-12deg', color: 'var(--lime-500)', animationDelay: '.2s' }}>
+            <I.leaf style={{ width: 38, height: 38 }} />
+          </div>
+          <div className="float bob" style={{ top: '70%', left: '3%', '--rot': '14deg', color: 'var(--lime-400)', animationDelay: '1.4s' }}>
+            <I.sparkle style={{ width: 26, height: 26 }} />
+          </div>
+          {play === 'bananas' && (
+            <div className="float bob" style={{ top: '30%', right: '4%', '--rot': '8deg', color: 'var(--sun)', animationDelay: '.8s' }}>
+              <I.sparkle style={{ width: 34, height: 34 }} />
+            </div>
+          )}
+        </React.Fragment>
+      )}
+      <div className="wrap">
+        <div className="hero-grid">
+          <div className="hero-copy">
+            <div className="hero-pill reveal in">
+              <span className="dot"><I.pin /></span>
+              Proudly serving Highlands Ranch &amp; nearby
+            </div>
+            <h1>{segs.map((s, i) => s.hl ? <span key={i} className="sweep">{s.t}</span> : <React.Fragment key={i}>{s.t}</React.Fragment>)}</h1>
+            <p className="hero-sub">{sub}</p>
+            <div className="hero-actions">
+              <a className="btn btn-primary btn-lg" href="#quote">Get my free quote <I.arrow /></a>
+              <a className="btn btn-ghost btn-lg" href="#estimator">Estimate my price</a>
+            </div>
+            <div className="hero-trust">
+              <span className="t"><I.bolt /> 100% electric, eco-friendly</span>
+              <span className="t"><I.leafCheck /> Always-free quotes</span>
+              <span className="t"><I.heart /> Locally owned</span>
+            </div>
+          </div>
+          <MowerScene dir={dir} play={play} />
+        </div>
+      </div>
+      <div className="hero-switch" role="tablist" aria-label="Hero style">
+        <span style={{ alignSelf: 'center', fontWeight: 700, fontSize: 12, color: 'var(--muted)', padding: '0 4px 0 8px' }}>Style</span>
+        {dirs.map(d => (
+          <button key={d.id} className={cx(dir === d.id && 'on')} onClick={() => setDir(d.id)}>
+            <span className="sw" style={{ background: d.c }} /> {d.label}
+          </button>
+        ))}
+      </div>
+    </header>
+  );
+}
+</script>
+
+<script type="text/babel">
+/* sections */
+function Stats() {
+  const data = [
+    { n: 240, suf: '+', l: 'Lawns mowed this season' },
+    { n: 4.9, dec: 1, suf: '/5', l: 'Average customer rating' },
+    { n: 100, suf: '%', l: 'Electric, low-noise fleet' },
+    { n: 24, suf: 'h', l: 'Typical quote turnaround' },
+  ];
+  return (
+    <section className="stats">
+      <div className="wrap">
+        <div className="stats-inner">
+          {data.map((s, i) => (
+            <div className="stat reveal" key={i}>
+              <div className="num"><CountUp to={s.n} suffix={s.suf} decimals={s.dec || 0} /></div>
+              <div className="lbl">{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const SERVICES = [
+  { ic: 'mow', tag: null, t: 'Mowing & Edging', d: 'Crisp, even cuts with clean edges along every walk, bed and driveway. Stripes optional, satisfaction guaranteed.' },
+  { ic: 'spray', tag: null, t: 'Fertilizing & Weed Control', d: 'Season-smart feeding and targeted weed treatment that turns thin, patchy turf into thick Highlands Ranch green.' },
+  { ic: 'mulch', tag: null, t: 'Mulching', d: 'Fresh mulch that locks in moisture, blocks weeds and makes your beds look pro. We haul in, spread and tidy up.' },
+  { ic: 'snow', tag: 'Seasonal', t: 'Snow Removal', d: 'When winter hits the Front Range, we clear driveways and walks fast — so you never shovel at 6am again.' },
+];
+
+function Services() {
+  return (
+    <section className="section bg-cream" id="services">
+      <div className="wrap">
+        <div className="section-head center reveal">
+          <span className="eyebrow">What we do</span>
+          <h2>Four services. One happy lawn.</h2>
+          <p>Everything your yard needs across the year — handled by one local crew you can actually get on the phone.</p>
+        </div>
+        <div className="svc-grid">
+          {SERVICES.map((s, i) => {
+            const Icon = I[s.ic];
+            return (
+              <article className={cx('svc', 'reveal', 'reveal-d' + (i + 1))} key={i} onClick={() => document.getElementById('quote').scrollIntoView({ behavior: 'smooth' })}>
+                {s.tag && <span className="svc-tag">{s.tag}</span>}
+                <div className="svc-ic"><Icon /></div>
+                <h3>{s.t}</h3>
+                <p>{s.d}</p>
+                <span className="more">Get this <I.arrow style={{ width: 15, height: 15 }} /></span>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Estimator() {
+  const [size, setSize] = useState(6000);
+  const [freq, setFreq] = useState('biweekly');
+  const FREQS = [
+    { id: 'weekly', label: 'Weekly', sub: 'best value', mult: 0.9, visits: 4 },
+    { id: 'biweekly', label: 'Bi-weekly', sub: 'most popular', mult: 1.0, visits: 2 },
+    { id: 'monthly', label: 'Monthly', sub: 'light upkeep', mult: 1.15, visits: 1 },
+    { id: 'onetime', label: 'One-time', sub: 'just once', mult: 1.35, visits: 1 },
+  ];
+  const f = FREQS.find(x => x.id === freq);
+  const base = 32 + (size / 1000) * 4.2;
+  const perVisit = Math.round((base * f.mult) / 5) * 5;
+  const monthly = freq === 'onetime' ? perVisit : perVisit * f.visits;
+  const sizeLabel = size >= 19500 ? '20,000+ sq ft' : size.toLocaleString() + ' sq ft';
+  const acre = (size / 43560).toFixed(2);
+  return (
+    <section className="section bg-soft" id="estimator">
+      <div className="wrap">
+        <div className="est reveal">
+          <div className="est-grid">
+            <div className="est-left">
+              <span className="eyebrow" style={{ color: 'var(--lime-300)' }}>Instant estimate</span>
+              <h2>Slide it. See your price.</h2>
+              <p className="lead">No forms, no waiting. Drag the slider to your yard size and pick how often you'd like us out.</p>
+              <div className="est-control">
+                <div className="row">
+                  <label>How big is your lawn?</label>
+                  <span className="val">{sizeLabel}</span>
+                </div>
+                <input className="slider" type="range" min="1000" max="20000" step="500"
+                  value={size} onChange={e => setSize(+e.target.value)} />
+                <div className="est-ticks"><span>Small</span><span>Average</span><span>Large</span><span>Estate</span></div>
+              </div>
+              <div className="est-freq">
+                {FREQS.map(x => (
+                  <button key={x.id} className={cx(freq === x.id && 'on')} onClick={() => setFreq(x.id)}>
+                    {x.label}<small>{x.sub}</small>
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="est-right">
+              <span className="est-quote-label">Your estimate</span>
+              <div className="est-price">
+                <span className="amt">${perVisit}</span>
+                <span className="per">/ visit</span>
+              </div>
+              <p className="est-note">Ballpark for a {sizeLabel} lawn (~{acre} acre){freq !== 'onetime' ? `, billed ${freq}.` : ', one-time service.'} Final price confirmed on your free on-site quote.</p>
+              <div className="est-breakdown">
+                <div className="b"><span>Lawn size</span><b>{sizeLabel}</b></div>
+                <div className="b"><span>Visit frequency</span><b style={{ textTransform: 'capitalize' }}>{freq === 'onetime' ? 'One-time' : freq}</b></div>
+                {freq !== 'onetime' && <div className="b"><span>Approx. monthly</span><b>${monthly}</b></div>}
+              </div>
+              <a className="btn btn-primary est-cta" href="#quote">Lock in this price <I.arrow /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const STEPS = [
+  { ic: 'chat', t: 'Tell us about it', d: 'Send a quick message or use the estimator. Tell us your address and what your yard needs.' },
+  { ic: 'cal', t: 'Get a fast quote', d: 'We confirm a fair, flat price — usually within 24 hours — and lock in a day that works for you.' },
+  { ic: 'mow', t: 'We swing in', d: 'Our electric crew shows up on time, does the work right, and cleans up like we were never there.' },
+  { ic: 'heart', t: 'You relax', d: 'Come home to a sharp, fresh-cut lawn. Recurring? It just happens — no chasing, no reminders.' },
+];
+
+function Process() {
+  return (
+    <section className="section bg-paper" id="how">
+      <div className="wrap">
+        <div className="section-head center reveal">
+          <span className="eyebrow">How it works</span>
+          <h2>Easy as peeling a banana.</h2>
+          <p>From "my grass is getting wild" to "wow, that looks great" in four simple steps.</p>
+        </div>
+        <div className="proc-grid">
+          {STEPS.map((s, i) => {
+            const Icon = I[s.ic];
+            return (
+              <div className={cx('step', 'reveal', 'reveal-d' + (i + 1))} key={i}>
+                <div className="step-num">{i + 1}</div>
+                <div className="step-ic"><Icon /></div>
+                <h3>{s.t}</h3>
+                <p>{s.d}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const PLANS = [
+  { name: 'The Trim', desc: 'Keep it neat & simple', price: 39, per: '/ visit', feat: false,
+    items: ['Professional mow + line trim', 'Crisp edging on walks & beds', 'Clippings cleaned & blown off', 'Flexible weekly or bi-weekly'] },
+  { name: 'The Full Monkey', desc: 'Our most-loved package', price: 89, per: '/ visit', feat: true,
+    items: ['Everything in The Trim', 'Seasonal fertilizing & weed control', 'Bed mulch refresh each season', 'Priority same-week scheduling', 'Free spot-treatments between visits'] },
+  { name: 'The Estate', desc: 'Big yards, year-round', price: 149, per: '/ visit', feat: false,
+    items: ['Everything in The Full Monkey', 'Large & multi-zone properties', 'Winter snow & ice removal', 'Dedicated account & seasonal plan'] },
+];
+
+function Pricing() {
+  return (
+    <section className="section bg-cream" id="pricing">
+      <div className="wrap">
+        <div className="section-head center reveal">
+          <span className="eyebrow">Simple pricing</span>
+          <h2>Pick your level of pampering.</h2>
+          <p>Flat, honest pricing with no surprise fees. Every plan includes free quotes and our 100% happy-lawn guarantee.</p>
+        </div>
+        <div className="price-grid">
+          {PLANS.map((p, i) => (
+            <div className={cx('plan', p.feat && 'feat', 'reveal', 'reveal-d' + (i + 1))} key={i}>
+              <div className="plan-name">{p.name}</div>
+              <div className="plan-desc">{p.desc}</div>
+              <div className="plan-price"><span className="amt">${p.price}</span><span className="per">{p.per}</span></div>
+              <ul>
+                {p.items.map((it, j) => <li key={j}><I.check /> {it}</li>)}
+              </ul>
+              <a className={cx('btn', p.feat ? 'btn-primary' : 'btn-dark')} href="#quote">Choose {p.name.replace('The ', '')} <I.arrow /></a>
+            </div>
+          ))}
+        </div>
+        <p className="plan-foot reveal">Not sure which fits? <a href="#quote" style={{ color: 'var(--accent-deep)', fontWeight: 700 }}>Get a free custom quote →</a> Prices vary with lawn size; your estimate is confirmed on-site.</p>
+      </div>
+    </section>
+  );
+}
+</script>
+
+<script type="text/babel">
+/* showcase */
+function LawnArt({ variant }) {
+  const after = variant === 'after';
+  const stripes = [];
+  for (let i = 0; i < 9; i++) {
+    stripes.push(
+      <rect key={i} x={-40 + i * 100} y="300" width="100" height="320"
+        fill={i % 2 ? (after ? '#54be1f' : '#7a8a4a') : (after ? '#3f9e16' : '#6d7d3e')}
+        transform="skewX(-8)" opacity={after ? 1 : .85} />
+    );
+  }
+  const patches = [];
+  if (!after) {
+    const spots = [[140,430,46],[330,520,60],[520,400,40],[650,500,54],[230,560,38],[430,440,30]];
+    spots.forEach((s, i) => patches.push(<ellipse key={'p'+i} cx={s[0]} cy={s[1]} rx={s[2]} ry={s[2]*0.55} fill="#9a8a52" opacity=".7" />));
+    const weeds = [[180,470],[400,540],[600,460],[300,420],[700,520]];
+    weeds.forEach((w, i) => (
+      patches.push(<g key={'w'+i} transform={`translate(${w[0]} ${w[1]})`}>
+        <path d="M0 0 L-3 -26 M0 0 L0 -30 M0 0 L4 -24" stroke="#caa53e" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+        <circle cx="0" cy="-30" r="5" fill="#ffd23f"/>
+      </g>)
+    ));
+  }
+  return (
+    <svg viewBox="0 0 800 600" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" style={{ display: 'block' }}>
+      <defs>
+        <linearGradient id={'sky'+variant} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor={after ? '#bfe6ff' : '#cdd6da'} />
+          <stop offset="1" stopColor={after ? '#eaf7ff' : '#e3e7e4'} />
+        </linearGradient>
+      </defs>
+      <rect width="800" height="600" fill={`url(#sky${variant})`} />
+      {after && <circle cx="660" cy="110" r="52" fill="#ffe27a" opacity=".9" />}
+      <ellipse cx="120" cy="300" rx="90" ry="70" fill={after ? '#2f7d10' : '#5f6a3c'} />
+      <ellipse cx="690" cy="290" rx="110" ry="80" fill={after ? '#357f12' : '#646f40'} />
+      <g opacity={after ? .9 : .7}>
+        {Array.from({length: 14}).map((_,i)=>(<rect key={i} x={40+i*55} y="270" width="14" height="60" rx="3" fill={after ? '#cdeac0' : '#b9bcab'} />))}
+        <rect x="40" y="288" width="760" height="9" fill={after ? '#bfe0ad' : '#aeb19f'} />
+      </g>
+      <rect x="0" y="300" width="800" height="300" fill={after ? '#4fa82a' : '#73803f'} />
+      <g style={{ clipPath: 'inset(300px 0 0 0)' }}>{stripes}</g>
+      {patches}
+      {!after && <path d="M0 305 q40 -14 80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 V330 H0 Z" fill="#7a8a4a" opacity=".5" />}
+    </svg>
+  );
+}
+
+function BeforeAfter() {
+  const [pct, setPct] = useState(52);
+  const ref = useRef(null);
+  const drag = useRef(false);
+  const move = useCallback((clientX) => {
+    const el = ref.current; if (!el) return;
+    const r = el.getBoundingClientRect();
+    const p = Math.max(2, Math.min(98, ((clientX - r.left) / r.width) * 100));
+    setPct(p);
+  }, []);
+  useEffect(() => {
+    const onMove = (e) => { if (!drag.current) return; move(e.touches ? e.touches[0].clientX : e.clientX); };
+    const onUp = () => { drag.current = false; };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('touchmove', onMove, { passive: false });
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('touchend', onUp);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('touchmove', onMove);
+      window.removeEventListener('mouseup', onUp);
+      window.removeEventListener('touchend', onUp);
+    };
+  }, [move]);
+  const start = (e) => { drag.current = true; move(e.touches ? e.touches[0].clientX : e.clientX); };
+  return (
+    <section className="section bg-soft" id="gallery">
+      <div className="wrap">
+        <div className="ba-wrap">
+          <div className="reveal">
+            <span className="eyebrow">See the difference</span>
+            <h2 style={{ fontSize: 'clamp(32px,4.6vw,52px)', marginTop: 16 }}>Drag to watch the<br/>jungle become a lawn.</h2>
+            <p style={{ marginTop: 18, color: 'var(--muted)', fontSize: 19, lineHeight: 1.55, maxWidth: 420 }}>
+              Tired, patchy and overgrown on the left. Thick, striped and edge-perfect on the right. Same yard — one visit from the Monkey Mowing crew.
+            </p>
+            <div style={{ display: 'flex', gap: 28, marginTop: 30, flexWrap: 'wrap' }}>
+              <div><div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 34, color: 'var(--accent-deep)' }}><CountUp to={1} prefix="" suffix="-visit" />*</div><div style={{ color: 'var(--muted)', fontWeight: 600, fontSize: 14 }}>transformations</div></div>
+              <div><div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 34, color: 'var(--accent-deep)' }}><CountUp to={100} suffix="%" /></div><div style={{ color: 'var(--muted)', fontWeight: 600, fontSize: 14 }}>happy-lawn guarantee</div></div>
+            </div>
+            <p style={{ marginTop: 18, fontSize: 12.5, color: 'var(--muted)' }}>*Illustrated preview — swap in your real before/after photos any time.</p>
+          </div>
+          <div className="ba" ref={ref} onMouseDown={start} onTouchStart={start}>
+            <div className="ba-layer ba-after"><LawnArt variant="after" /></div>
+            <div className="ba-layer ba-before" style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}><LawnArt variant="before" /></div>
+            <span className="ba-badge before">Before</span>
+            <span className="ba-badge after">After</span>
+            <div className="ba-handle" style={{ left: pct + '%' }}>
+              <div className="ba-knob"><I.arrow style={{ width: 16, transform: 'scaleX(-1)' }} /><I.arrow style={{ width: 16, marginLeft: -4 }} /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function About() {
+  const points = [
+    { ic: 'bolt', t: 'Quiet, all-electric fleet', d: 'No fumes, no gas-mower roar at 7am. Better for your kids, pets and the Front Range air.' },
+    { ic: 'heart', t: 'Local & owner-operated', d: 'We live here too. You get the same friendly faces every visit — not a rotating crew of strangers.' },
+    { ic: 'shield', t: 'Happy-lawn guarantee', d: "Not thrilled with a cut? We come back and make it right. No drama, no charge." },
+  ];
+  return (
+    <section className="section bg-paper" id="about">
+      <div className="wrap">
+        <div className="about-grid">
+          <div className="about-media reveal">
+            <div className="about-card">
+              <img src="project/assets/logo-transparent.png" alt="Monkey Mowing" />
+            </div>
+            <div className="about-quote">"They treat my yard like it's <span>their own backyard.</span>"</div>
+          </div>
+          <div className="reveal reveal-d1">
+            <span className="eyebrow">Our story</span>
+            <h2 style={{ fontSize: 'clamp(32px,4.6vw,52px)', marginTop: 16 }}>A little cheeky.<br/>Seriously good at grass.</h2>
+            <p style={{ marginTop: 18, color: 'var(--muted)', fontSize: 18, lineHeight: 1.6 }}>
+              Monkey Mowing started with one mower, one trailer and a simple promise: show up, do great work, and make lawn care actually pleasant. Today we keep yards across Highlands Ranch looking sharp all year — with electric equipment and a crew that genuinely cares.
+            </p>
+            <div className="about-points">
+              {points.map((p, i) => {
+                const Icon = I[p.ic];
+                return (
+                  <div className="about-point" key={i}>
+                    <div className="ic"><Icon /></div>
+                    <div><h4>{p.t}</h4><p>{p.d}</p></div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const FAQS = [
+  { q: 'What areas do you serve?', a: "We cover Highlands Ranch and the surrounding neighborhoods. Not sure if you're in range? Send your address — if we can't reach you, we'll point you to someone great who can." },
+  { q: 'How much does it cost?', a: "Most weekly or bi-weekly mows land between $39 and $89 per visit depending on lawn size and what you need. Use the instant estimator above for a ballpark, then we confirm a flat price with a free on-site quote." },
+  { q: 'Are quotes really free?', a: "Always. We'll look at your lawn, talk through what you want, and give you an honest flat price with zero obligation and zero pressure." },
+  { q: 'Is the equipment really all-electric?', a: "Yep. Our mowers and trimmers are battery-powered — that means no fumes, far less noise, and a smaller footprint on the air your family breathes." },
+  { q: 'Do I need to be home for service?', a: "Nope. Once we have access to the yard, we handle everything and send a quick note when we're done. Recurring plans just run on autopilot." },
+  { q: 'What about snow in winter?', a: "Our Estate and add-on plans include driveway and walkway snow removal, so the same crew that mows your lawn keeps you dug out all winter." },
+];
+
+function FAQ() {
+  const [open, setOpen] = useState(0);
+  return (
+    <section className="section bg-cream" id="faq">
+      <div className="wrap">
+        <div className="faq-grid">
+          <div className="reveal">
+            <span className="eyebrow">Good to know</span>
+            <h2 style={{ fontSize: 'clamp(32px,4.6vw,50px)', marginTop: 16 }}>Questions,<br/>answered.</h2>
+            <p style={{ marginTop: 18, color: 'var(--muted)', fontSize: 18, lineHeight: 1.6, maxWidth: 360 }}>
+              Still curious about something? Give us a shout — real humans answer the phone.
+            </p>
+            <a className="btn btn-dark" style={{ marginTop: 26 }} href="tel:303-957-7700"><I.phone /> 303-957-7700</a>
+          </div>
+          <div className="faq-list">
+            {FAQS.map((f, i) => (
+              <div className={cx('faq-item', open === i && 'open')} key={i}>
+                <button className="faq-q" onClick={() => setOpen(open === i ? -1 : i)} aria-expanded={open === i}>
+                  {f.q}<span className="faq-ic"><I.plus /></span>
+                </button>
+                <div className="faq-a" style={{ maxHeight: open === i ? 260 : 0 }}>
+                  <div className="faq-a-inner">{f.a}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+</script>
+
+<script type="text/babel">
+/* contact, nav, footer */
+const NAV_LINKS = [
+  { href: '#services', label: 'Services' },
+  { href: '#estimator', label: 'Estimate' },
+  { href: '#pricing', label: 'Pricing' },
+  { href: '#about', label: 'About' },
+  { href: '#faq', label: 'FAQ' },
+];
+
+function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menu, setMenu] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  useEffect(() => { document.body.style.overflow = menu ? 'hidden' : ''; }, [menu]);
+  return (
+    <React.Fragment>
+      <nav className={cx('nav', scrolled && 'scrolled')}>
+        <div className="wrap nav-inner">
+          <a className="nav-logo" href="#top"><img src="project/assets/logo-transparent.png" alt="Monkey Mowing" /></a>
+          <div className="nav-links">
+            {NAV_LINKS.map(l => <a key={l.href} href={l.href}>{l.label}</a>)}
+          </div>
+          <div className="nav-cta">
+            <a className="nav-phone" href="tel:303-957-7700"><I.phone /> 303-957-7700</a>
+            <a className="btn btn-primary" href="#quote" style={{ padding: '12px 22px', fontSize: 15.5 }}>Free quote</a>
+            <button className="nav-burger" onClick={() => setMenu(true)} aria-label="Menu"><I.menu /></button>
+          </div>
+        </div>
+      </nav>
+      <div className={cx('msheet', menu && 'open')}>
+        <div className="msheet-bg" onClick={() => setMenu(false)} />
+        <div className="msheet-panel">
+          <div className="msheet-top">
+            <img src="project/assets/logo-transparent.png" alt="Monkey Mowing" style={{ height: 40 }} />
+            <button className="nav-burger" onClick={() => setMenu(false)} aria-label="Close"><I.x /></button>
+          </div>
+          {NAV_LINKS.map(l => <a key={l.href} href={l.href} onClick={() => setMenu(false)}>{l.label}</a>)}
+          <a href="#quote" onClick={() => setMenu(false)} style={{ color: 'var(--accent-deep)' }}>Get a free quote →</a>
+          <a className="btn btn-dark" href="tel:303-957-7700" style={{ marginTop: 14, justifyContent: 'center' }}><I.phone /> 303-957-7700</a>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+}
+
+const SERVICE_OPTS = ['Mowing & edging', 'Fertilizing', 'Mulching', 'Snow removal', 'Not sure yet'];
+
+function QuoteForm() {
+  const [form, setForm] = useState({ name: '', phone: '', email: '', address: '', message: '' });
+  const [services, setServices] = useState(['Mowing & edging']);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+  const [sent, setSent] = useState(false);
+  const validate = (f) => {
+    const e = {};
+    if (!f.name.trim()) e.name = 'Please tell us your name';
+    if (!f.phone.trim()) e.phone = 'We need a number to reach you';
+    else if (f.phone.replace(/\D/g, '').length < 10) e.phone = "That doesn't look like a full number";
+    if (!f.email.trim()) e.email = 'An email helps us send your quote';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = 'Hmm, check that email address';
+    return e;
+  };
+  const set = (k, v) => {
+    const next = { ...form, [k]: v };
+    setForm(next);
+    if (touched[k]) setErrors(validate(next));
+  };
+  const blur = (k) => { setTouched({ ...touched, [k]: true }); setErrors(validate(form)); };
+  const toggleSvc = (s) => setServices(p => p.includes(s) ? p.filter(x => x !== s) : [...p, s]);
+  const submit = (e) => {
+    e.preventDefault();
+    const errs = validate(form);
+    setErrors(errs);
+    setTouched({ name: true, phone: true, email: true });
+    if (Object.keys(errs).length === 0) setSent(true);
+  };
+  const fieldClass = (k) => cx('fr', errors[k] && touched[k] && 'err');
+  return (
+    <section className="section quote" id="quote">
+      <div className="float bob" style={{ top: '12%', right: '6%', color: 'rgba(255,255,255,.07)' }}><I.leaf style={{ width: 120, height: 120 }} /></div>
+      <div className="wrap">
+        <div className="quote-grid">
+          <div className="reveal">
+            <span className="eyebrow" style={{ color: 'var(--lime-300)' }}>Free, no-pressure quote</span>
+            <h2>Let's get your<br/>lawn looking great.</h2>
+            <p className="lead">Tell us a little about your yard and we'll get back to you — usually within a day — with a friendly, flat-rate quote.</p>
+            <div className="quote-contacts">
+              <a className="qc" href="tel:303-957-7700">
+                <div className="ic"><I.phone /></div>
+                <div><small>Call or text</small><b>303-957-7700</b></div>
+              </a>
+              <a className="qc" href="mailto:sales@monkeymowing.com">
+                <div className="ic"><I.mail /></div>
+                <div><small>Email us</small><b>sales@monkeymowing.com</b></div>
+              </a>
+              <div className="qc">
+                <div className="ic"><I.pin /></div>
+                <div><small>Service area</small><b>Highlands Ranch &amp; nearby</b></div>
+              </div>
+            </div>
+          </div>
+          <div className="form-card reveal reveal-d1">
+            {sent ? (
+              <div className="form-success">
+                <div className="check"><I.leafCheck /></div>
+                <h3>Quote request sent! 🌱</h3>
+                <p>Thanks, {form.name.split(' ')[0] || 'friend'}! Our crew will reach out within 24 hours at {form.phone || 'your number'}. Keep an eye on your phone.</p>
+                <button className="btn btn-ghost" style={{ marginTop: 24 }} onClick={() => { setSent(false); setForm({ name:'', phone:'', email:'', address:'', message:'' }); setServices(['Mowing & edging']); setTouched({}); setErrors({}); }}>Send another</button>
+              </div>
+            ) : (
+              <form onSubmit={submit} noValidate>
+                <div className="fr-2">
+                  <div className={fieldClass('name')}>
+                    <label>Name <span className="req">*</span></label>
+                    <input value={form.name} onChange={e => set('name', e.target.value)} onBlur={() => blur('name')} placeholder="Jane Banana" />
+                    <div className="msg">{errors.name}</div>
+                  </div>
+                  <div className={fieldClass('phone')}>
+                    <label>Phone <span className="req">*</span></label>
+                    <input value={form.phone} onChange={e => set('phone', e.target.value)} onBlur={() => blur('phone')} placeholder="(303) 555-0199" inputMode="tel" />
+                    <div className="msg">{errors.phone}</div>
+                  </div>
+                </div>
+                <div className={fieldClass('email')}>
+                  <label>Email <span className="req">*</span></label>
+                  <input value={form.email} onChange={e => set('email', e.target.value)} onBlur={() => blur('email')} placeholder="jane@email.com" inputMode="email" />
+                  <div className="msg">{errors.email}</div>
+                </div>
+                <div className="fr">
+                  <label>Property address <span style={{ color: 'var(--muted)', fontWeight: 600 }}>(optional)</span></label>
+                  <input value={form.address} onChange={e => set('address', e.target.value)} placeholder="Street, Highlands Ranch" />
+                </div>
+                <div className="fr">
+                  <label>What do you need?</label>
+                  <div className="chips">
+                    {SERVICE_OPTS.map(s => (
+                      <button type="button" key={s} className={cx('chip', services.includes(s) && 'on')} onClick={() => toggleSvc(s)}>
+                        <I.check /> {s}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="fr">
+                  <label>Anything else? <span style={{ color: 'var(--muted)', fontWeight: 600 }}>(optional)</span></label>
+                  <textarea value={form.message} onChange={e => set('message', e.target.value)} placeholder="Gate code, dog in the yard, problem spots..." />
+                </div>
+                <button type="submit" className="btn btn-primary btn-lg form-submit">Send my free quote <I.arrow /></button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="wrap">
+        <div className="footer-grid">
+          <div>
+            <img className="fl" src="project/assets/logo-light.png" alt="Monkey Mowing" />
+            <p className="fdesc">Friendly, all-electric lawn care for Highlands Ranch and the neighborhoods around it. Mow less, monkey around more.</p>
+          </div>
+          <div>
+            <h5>Services</h5>
+            <ul>
+              <li><a href="#services">Mowing &amp; edging</a></li>
+              <li><a href="#services">Fertilizing</a></li>
+              <li><a href="#services">Mulching</a></li>
+              <li><a href="#services">Snow removal</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Company</h5>
+            <ul>
+              <li><a href="#about">About us</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#quote">Free quote</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Get in touch</h5>
+            <ul>
+              <li><a href="tel:303-957-7700">303-957-7700</a></li>
+              <li><a href="mailto:sales@monkeymowing.com">sales@monkeymowing.com</a></li>
+              <li><a href="#quote">Highlands Ranch, CO</a></li>
+            </ul>
+            <div className="footer-social" style={{ marginTop: 18 }}>
+              <a href="#quote" aria-label="Facebook"><I.fb /></a>
+              <a href="#quote" aria-label="Instagram"><I.ig /></a>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Monkey Mowing. All rights reserved.</span>
+          <span>Made with 🍌 in Highlands Ranch, Colorado</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+</script>
+
+<script type="text/babel">
+/* app root */
+const { useState: useS, useEffect: useE } = React;
+
+function App() {
+  const [dir, setDir] = useS('sunny');
+  const [headline, setHeadline] = useS('Lawn care that goes *bananas*.');
+  const [play, setPlay] = useS('playful');
+  const [accent, setAccent] = useS('#54be1f');
+  const [fonts, setFonts] = useS('fredoka');
+
+  useRevealObserver();
+
+  useE(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--accent', accent);
+    root.style.setProperty('--accent-deep', `color-mix(in oklab, ${accent}, #06210a 34%)`);
+    root.setAttribute('data-fonts', fonts);
+  }, [accent, fonts]);
+
+  return (
+    <React.Fragment>
+      <Nav />
+      <main>
+        <Hero dir={dir} setDir={setDir} headline={headline} play={play} />
+        <Stats />
+        <Services />
+        <Estimator />
+        <Process />
+        <Pricing />
+        <BeforeAfter />
+        <About />
+        <FAQ />
+        <QuoteForm />
+      </main>
+      <Footer />
+    </React.Fragment>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
