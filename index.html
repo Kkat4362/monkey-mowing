@@ -1096,6 +1096,7 @@ function Nav() {
 }
 
 const SERVICE_OPTS = ['Mowing & edging', 'Fertilizing', 'Mulching', 'Snow removal', 'Not sure yet'];
+const WEB3FORMS_KEY = '92d7963d-dff9-47f4-9489-b47455ee5810';
 
 function QuoteForm() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', address: '', message: '' });
@@ -1103,6 +1104,8 @@ function QuoteForm() {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState('');
   const validate = (f) => {
     const e = {};
     if (!f.name.trim()) e.name = 'Please tell us your name';
@@ -1119,12 +1122,38 @@ function QuoteForm() {
   };
   const blur = (k) => { setTouched({ ...touched, [k]: true }); setErrors(validate(form)); };
   const toggleSvc = (s) => setServices(p => p.includes(s) ? p.filter(x => x !== s) : [...p, s]);
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     const errs = validate(form);
     setErrors(errs);
     setTouched({ name: true, phone: true, email: true });
-    if (Object.keys(errs).length === 0) setSent(true);
+    if (Object.keys(errs).length !== 0) return;
+    setSending(true);
+    setSendError('');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New quote request from ${form.name || 'a visitor'} — Monkey Mowing`,
+          from_name: 'Monkey Mowing website',
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          address: form.address || '(not provided)',
+          services: services.length ? services.join(', ') : '(none selected)',
+          message: form.message || '(no extra notes)',
+        }),
+      });
+      const data = await res.json();
+      if (data.success) setSent(true);
+      else setSendError("Hmm, that didn't go through. Please try again, or call us at 303-957-7700.");
+    } catch (err) {
+      setSendError('Network hiccup — please try again, or give us a call at 303-957-7700.');
+    } finally {
+      setSending(false);
+    }
   };
   const fieldClass = (k) => cx('fr', errors[k] && touched[k] && 'err');
   return (
@@ -1157,7 +1186,7 @@ function QuoteForm() {
                 <div className="check"><I.leafCheck /></div>
                 <h3>Quote request sent! 🌱</h3>
                 <p>Thanks, {form.name.split(' ')[0] || 'friend'}! Our crew will reach out within 24 hours at {form.phone || 'your number'}. Keep an eye on your phone.</p>
-                <button className="btn btn-ghost" style={{ marginTop: 24 }} onClick={() => { setSent(false); setForm({ name:'', phone:'', email:'', address:'', message:'' }); setServices(['Mowing & edging']); setTouched({}); setErrors({}); }}>Send another</button>
+                <button className="btn btn-ghost" style={{ marginTop: 24 }} onClick={() => { setSent(false); setForm({ name:'', phone:'', email:'', address:'', message:'' }); setServices(['Mowing & edging']); setTouched({}); setErrors({}); setSendError(''); }}>Send another</button>
               </div>
             ) : (
               <form onSubmit={submit} noValidate>
@@ -1196,7 +1225,10 @@ function QuoteForm() {
                   <label>Anything else? <span style={{ color: 'var(--muted)', fontWeight: 600 }}>(optional)</span></label>
                   <textarea value={form.message} onChange={e => set('message', e.target.value)} placeholder="Gate code, dog in the yard, problem spots..." />
                 </div>
-                <button type="submit" className="btn btn-primary btn-lg form-submit">Send my free quote <I.arrow /></button>
+                {sendError && <p style={{ color: '#d23f3f', fontWeight: 600, fontSize: 14, marginBottom: 12, textAlign: 'center' }}>{sendError}</p>}
+                <button type="submit" className="btn btn-primary btn-lg form-submit" disabled={sending} style={sending ? { opacity: .7, cursor: 'wait' } : null}>
+                  {sending ? 'Sending…' : <React.Fragment>Send my free quote <I.arrow /></React.Fragment>}
+                </button>
               </form>
             )}
           </div>
